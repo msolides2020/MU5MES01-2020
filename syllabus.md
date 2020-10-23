@@ -22,7 +22,7 @@ This is the preliminary program
 
 ## Part II - Introduction to nonlinear elasticity
   * 23/10 Cours and basic tutorial
-  * 06/11 Explicit implementation of a Newton solver 
+  * 06/11 Interrogation orale individuelle et Explicit implementation of a Newton solver 
   
  ## Part III - Dynamics
   * 13/11 Cours (D. Duhamel) and basic tutorial
