@@ -12,6 +12,8 @@ You also need a working `python3` installation with several additional packages.
 Install basic Python 3 packages
 
 ```
+sudo apt update
+sudo apt upgrade
 sudo apt install black cython3 jupyter-core jupyter-client jupyter-notebook pylint python3-autopep8 python3-numpy python3-flake8 python3-h5py python3-jupyter-console python3-matplotlib python3-mpi4py python3-notebook python3-petsc4py python3-pytest python3-requests python3-scipy python3-slepc4py python3-skimage python3-sphinx python3-sympy spyder pelican jupyter-nbconvert jupyter-qtconsole python3-qtconsole
 ```
 
