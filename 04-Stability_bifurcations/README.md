@@ -28,7 +28,7 @@ Your report should summarize and present synthetically your work on these items 
 
 **Important informations:**
   - Deadline: For the final version **Monday 4 January, 23h59**. 
-  - **The maximal length of the report is 4 pages. **
+  - **The maximal length of the report is 4 pages.**
   - To submit your report: 
       - An electronic version should be submitted to github. Proceed as follows to create the work and submission repository for your group:
         - **Only one of the two students** of your group will go to  https://classroom.github.com/g/N7o4GEQ4, accept the assignement and create a `new team`, naming the team as `NAMESTUDENT1-NAMESTUDENT2`.
