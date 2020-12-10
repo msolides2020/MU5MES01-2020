@@ -58,6 +58,11 @@ Owing to their slenderness, these structures are subjected to so-called
 spaghetti might lead to its rupture. The goal of this project is to better
 understand the role of the second-order effects.
 
+Note that a simplified version of the considerations presented here is implemented
+in e.g. [Eurocode 3](https://www.eurocodes.fr/fr/eurocode3.html)
+(see EN 1993-1-1, Sec. 6.3). These calculations are routinely implemented in
+engineering practices for the design of slender structural members.
+
 We consider a simplified situation, where the tower is subjected to its own
 weight only. In the remainder of this assignement, `x` denotes the direction of
 gravity, `y` is the in-plane direction perpendicular to `x` and `z` is the
