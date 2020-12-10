@@ -10,3 +10,5 @@ poisson000000.vtu
 
 # FEniCS
 jitfailure*
+
+__pycache__
