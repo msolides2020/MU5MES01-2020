@@ -2,8 +2,8 @@
 
 00-Intro/output/
 
-poisson.pvd
-poisson000000.vtu
+*.pvd
+*.vtu
 
 # Jupyter Notebook
 .ipynb_checkpoints

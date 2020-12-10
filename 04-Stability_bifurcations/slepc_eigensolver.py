@@ -109,10 +109,10 @@ class EigenSolver(object):
         return E
         
     
-    def solve(self, n_eig):
+    def solve(self, n_eig, verbose=True):
         E = self.E
         E.setDimensions(n_eig)
-        self.set_options(self.slepc_options)
+        self.set_options(self.slepc_options,verbose=verbose)
         E.setFromOptions()
         E.solve()
         # print info
@@ -121,16 +121,18 @@ class EigenSolver(object):
         self.nev, ncv, mpd = E.getDimensions()
         tol, maxit = E.getTolerances()
         self.nconv = E.getConverged()
-        print("Solution method: {:s}, stopping condition: tol={:.4g}, maxit={:d}".format(eps_type,tol, maxit))
-        print("Number of converged/requested eigenvalues with {:d} iterations  : {:d}/{:d}".format(its,self.nconv,self.nev))
+        if verbose == True:
+            print("Solution method: {:s}, stopping condition: tol={:.4g}, maxit={:d}".format(eps_type,tol, maxit))
+            print("Number of converged/requested eigenvalues with {:d} iterations  : {:d}/{:d}".format(its,self.nconv,self.nev))
         return self.nconv, its
         
-    def set_options(self,slepc_options):
-        print("---- setting additional slepc options -----")
+    def set_options(self,slepc_options,verbose=True):
+        if verbose == True:
+            print("---- setting additional slepc options -----")
         for (opt, value) in slepc_options.items():
-            print("    ",opt,":",value)
+            if verbose == True:
+                print("    ",opt,":",value)
             PETScOptions.set(opt,value) 
-        print("-------------------------------------------")
         self.E.setFromOptions()
         
     def get_eigenpair(self,i):

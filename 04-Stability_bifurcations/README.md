@@ -27,19 +27,19 @@ Your report should summarize and present synthetically your work on these items 
 - In the written report you should correctly formulate each mathematical problem solved. You should not report all the details of the derivation of the formulation in the report. You will be asked about that during the oral examination.
 
 **Important informations:**
+  - Deadline: For the final version **Monday 4 January, 23h59**. 
+  - **The maximal length of the report is 4 pages. **
+  - To submit your report: 
+      - An electronic version should be submitted to github. Proceed as follows to create the work and submission repository for your group:
+        - **Only one of the two students** of your group will go to  https://classroom.github.com/g/N7o4GEQ4, accept the assignement and create a `new team`, naming the team as `NAMESTUDENT1-NAMESTUDENT2`.
+        - **Once the first student has create the team**, the second student goes to https://classroom.github.com/g/N7o4GEQ4, accepts the assignment and asks to join the team with his name (do not create another team, there should one team for group).
 
-- Deadline: For the final version **Thurdsay 19 december, 23h59**.
-- **The maximal length of the report is 8 pages. However, keep in mind that, with the quantity of information, the shorter the better. A 3 page report can be better than a 8 page report.**
-- To submit your report:
-    - a paper copy of your report should be returned  **Friday 20/12**. One paper version per group is sufficient. The paper copy should correspond to the document sent on github.
-    - An electronic version should be submitted to github. Use the same repository you used for the first report. If you want to change your group, send a message on slack (should be exceptional).
-    - In your "group" repository you should:
-        1. Create a directory called `CR2`
-        2. Put your report in the pdf form named as `MES01-CR2-studentname1-studentname2.pdf` (file with a different naming scheme will not be accepted and evaluated.
-        3. Put all your files you used to obtain your results in `CR2/src` (namely the *.py and *.ipynb files)
+      - In your "group" repository you should: 
+          1. Create a directory called `CR2`
+          2. Put your report in the pdf form named as `MES01-CR2-studentname1-studentname2.pdf` (file with a different naming scheme will not be accepted and evaluated. 
+          3. Put all your files you used to obtain your results in `CR2/src` (namely the *.py and *.ipynb files)
   - We will evaluate the quality of the presentation (language, typesetting, and figures). Being able to effectively communicate your results is important for your future.
-- We require you to be able to use git at least to push your data to the repository. This is the main reason why we ask to submit your report on the github platform. We will not accept submissions by mail.
-
+  - We ask you to be able to use git at least to push your data to the repository. This is the main reason why we ask to submit your report on the github platform. We will not accept submissions by mail.
 # Nonlinear design of concrete bridge towers
 
 The largest bridges in the world are [cable-stayed
@@ -176,36 +176,22 @@ for example how the bifurcation curve is affected by `α`.
 Newton solver), and justify the value of parameters you used to perform the
 simulation (load-step, minimum and maximum loads, numerical tolerances, initial
 guesses, imperfection…).
+The stability limit of the fundamental branch coincides with the first buckling load. Why? Are you able to prove it?
 
 ## Part II. Stability analysis
 
-By studying the sign of the smallest eigenvalue of the hessian matrix, analyse the stability of the three branches in the bifurcation diagram given in part I. Produce a figure where each branch is coloured in red if unstable and in green if stable. The stability limit of the fundamental branch coincides with the first buckling load. Why? Are you able to prove it?
+By studying the sign of the smallest eigenvalue of the hessian matrix, study the stability of the three branches in the bifurcation diagram given in part I. Produce a figure where each branch is coloured in red if unstable and in green if stable. The stability limit of the fundamental branch coincides with the first buckling load. Why? Are you able to prove it?
 
-### Eigenvalue solver
+For the stability analysis, you can use the notebook `NonlinearStabilityCheck.ipynb` as an example 
+Further documentation:
+  - Some details on the linearization of the equilibrium equations and the derivatives can be found in Section 3.5 of [2]
+  - You can look also to [3] for the buckling analysis.
 
-We provide a simple eigenvalue solver in the python module `slepc_eigensolver`. In order to use this module, you should place the file `slepc_eigensolver.py` in the directory that holds your analysis and import (`from slepc_eigensolver import EigenSolver`).
 
-Note that this solver is based on [SLEPc](https://slepc.upv.es/), the Scalable
-Library for Eigenvalue Problem Computations. This library is well documented,
-and you are invited to refer to the
-[documentations](https://slepc.upv.es/documentation/) for further details.
+**Advanced (to do only if you have finished the rest)**
+-  Estimate the buckling load for the vertical configuration by performing a linearized buckling analysis by solving and eigenvalue problem of the type`(K-\lambda G) U =0` where `K` and `G` are the matrices obtained by assembling the bilinear forms associated to the elastic and geometric stiffness, respectively (see the pdf of the presention 11/12/2020). 
 
-With the following syntax you solve the eigenvalue problem `(K - λ⋅G)⋅U = 0` where `K` and `G` are the matrices obtained by assembling the bilinear forms `a_k` and `a_g`. We recently changed the options in the slepc_eigensolver file, so that the solver should normally converge even if the matrix `G` is not definite (see option `E.setProblemType(SLEPc.EPS.ProblemType.GHIEP)` at line 82 of `slepc_eigensolver.py`)
-```python
-from slepc_eigensolver import EigenSolver
-from slepc4py import SLEPc
-eig_solver = EigenSolver(a_k, a_g,  u, bcs=bcs)
-neig = 10
-ncv, it = eig_solver.solve(neig)
-eigenvalues, [eigenvectors_real, eigenvectors_im] = eig_solver.get_eigenpairs(neig)
-eig_solver.save_eigenvectors(ncv)
-```
-You can normally visualize the eigenvectors also in `paraview`, see the file `output/modes.pvd` created when running the eigensolver.
-
-An example illustrating this module is provided in the notebook
-`EigenvalueDemoSimple.ipynb`.
-
-### Further documentation
+*Further documentation*
 
 - Some details on the linearization of the equilibrium equations and the
   derivatives can be found in Section 3.5 of [2]
