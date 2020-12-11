@@ -2,8 +2,8 @@
 
 00-Intro/output/
 
-poisson.pvd
-poisson000000.vtu
+*.pvd
+*.vtu
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -11,8 +11,12 @@ poisson000000.vtu
 # FEniCS
 jitfailure*
 
+
 # xdmf paraview
 *.h5
 
 # seb N local files
 *-seb*
+
+__pycache__
+
