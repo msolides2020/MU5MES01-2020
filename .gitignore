@@ -10,3 +10,9 @@ poisson000000.vtu
 
 # FEniCS
 jitfailure*
+
+# xdmf paraview
+*.h5
+
+# seb N local files
+*-seb*
